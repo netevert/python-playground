@@ -8,10 +8,7 @@ https://github.com/adityarkelkar/python-log-parser/blob/master/log
 import argparse
 
 class LogEntry:
-    """Object to parse CLF log lines into a common data structure
-
-    Args: 
-        entry(string): A log line from a CLF file to be parsed 
+    """Object to parse CLF log lines into a common data structure 
 
     Attributes: 
         ip_address(string): The ip address field within the log line
@@ -21,6 +18,9 @@ class LogEntry:
         object_size(string): The object size within the log line
         url(string): The origin URL within the log line
         user_agent(string): The User Agent field within the log line
+
+    Methods:
+        match_ip(target_ip): Checks if a target ip matches the LogEntry ip_address attribute
     """
     def __init__(self, entry):
         # Loads log line and parses it into LogEntry data structure
@@ -46,7 +46,10 @@ class LogEntry:
 
     def match_ip(self, target_ip):
         """Method to check if a target ip matches the LogEntry ip_address attribute
-           Returns false if a match is not found, otherwise false
+           Returns false if a match is not found, otherwise true
+
+           Parameters:
+               target_ip(str)
            """
         if target_ip != self.ip_address:
             return False
@@ -55,18 +58,22 @@ class LogEntry:
 class LogParser:
     """Object to parse CLF logs and run searches for specific entries
 
-    Args: 
-        file_path(string): A CLF log file to be parsed 
-
     Attributes: 
         file_path(string): A CLF log file to be parsed by object's methods
+
+    Methods:
+        search_ip(target_ip): searches for entries in a CLF log that match target ip
     """
     def __init__(self, file_path):
         self.file_path = file_path
 
     def search_ip(self, target_ip):
         """Method to search for entries in a CLF log that match a target ip.
-           Prints all matches to the console"""
+           Prints all matches to the console
+           
+           Parameters:
+               target_ip(str)
+           """
         
         # Attempt to open and process file
         try:
