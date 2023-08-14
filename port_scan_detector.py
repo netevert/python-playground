@@ -7,6 +7,8 @@ ratio can be specified through command line options
 
 Test with this file:
 https://github.com/sangh42/Port-Scan-Detector/blob/master/packets.pcap.xz
+
+WORK IN PROGRESS
 """
 
 import argparse
