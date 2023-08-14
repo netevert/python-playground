@@ -1,6 +1,8 @@
 """
 Simple scraper
 
+WORK IN PROGRESS
+
 """
 
 import re
